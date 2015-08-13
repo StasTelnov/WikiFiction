@@ -1,0 +1,9 @@
+!!!
+%html{:lang => "en"}
+  = render :partial => 'layouts/partials/head'
+  %body
+    = render :partial => 'layouts/partials/header'
+    .container.main-container
+      .flash-messages
+        = bootstrap_flash
+      = yield

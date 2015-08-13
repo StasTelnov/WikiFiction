@@ -1,0 +1,18 @@
+= link_to('New article', new_article_path, :class => 'btn btn-success')
+%br
+= paginate @articles
+%table.table
+  %thead
+    %tr
+      %th.col-md-2 Title
+      %th.col-md-2 Author
+      %th.col-md-2 Category
+      %th.col-md-1 Rating
+      %th.col-md-1 Number of comments
+      %th.col-md-2 ip
+      %th.col-md-1 Last update
+      %th.col-md-1
+  %tbody
+    - @articles.order(:id).each do |article|
+      = render(:partial => 'articles/partials/article', :locals => { :article => article })
+= paginate @articles

@@ -1,0 +1,10 @@
+= simple_form_for(@article, :remote => true, :class => 'RemoteForm', :data => { :'class-binder' => 'RemoteForm' }) do |f|
+  = render(:partial => 'share/base_errors', :locals => { :object => @article })
+  .row
+    .col-md-3
+      = f.input :title
+      = f.input :author
+      = f.association :category
+  = f.input :text, :input_html => { :rows => 25 }
+  = f.input :lock_version, :as => :hidden
+  = save_button(f)

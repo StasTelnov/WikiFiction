@@ -1,0 +1,32 @@
+%dl.dl-horizontal
+  %dt Title:
+  %dd= @article.title
+  %dt Author:
+  %dd= @article.author
+  %dt Category:
+  %dd= @article.category.name
+  %dt Rating:
+  %dd#rating= number_with_precision(@article.rating, :precision => 2)
+  %dt IP:
+  %dd= @article.ip
+  %dt Last update:
+  %dd= time_ago_in_words(@article.updated_at)
+
+%p= @article.text
+
+%p
+  = link_to('Edit', edit_article_path(@article), :class => 'btn btn-warning')
+  = link_to('List', articles_path, :class => 'btn btn-info')
+
+%table.table.table-striped#comments
+  %thead
+    %tr
+      %th.col-md-2
+      %th.col-md-9
+      %th.col-md-1
+  %tbody
+    - @article.comments.each do |comment|
+      = render(:partial => 'articles/partials/comment', :locals => { :comment => comment })
+
+= render(:partial => 'articles/partials/comment_form', :locals => { :comment => @article.comments.build })
+

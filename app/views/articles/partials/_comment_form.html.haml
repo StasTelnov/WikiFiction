@@ -1,0 +1,8 @@
+= simple_form_for(comment, :url => add_comment_article_path(@article), :method => :post, :remote => true, :class => 'RemoteForm', :data => { :'class-binder' => 'RemoteForm' }) do |f|
+  = render(:partial => 'share/base_errors', :locals => { :object => comment })
+  .row
+    .col-md-2
+      = f.input :author
+      = f.input :rating, :input_html => { :min => 0, :max => 5 }
+  = f.input :text
+  = save_button(f, 'Add comment')
