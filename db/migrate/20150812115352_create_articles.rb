@@ -10,5 +10,8 @@ class CreateArticles < Migration::TableMigration
 
       t.foreign_key :categories
     end
+    add_index :articles, :title
+    add_index :articles, :author
+    add_index :articles, :ip
   end
 end
