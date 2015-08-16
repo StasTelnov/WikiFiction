@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'rails_12factor', :group => :production
+
 gem 'rails', '4.2.3'                                      # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg'                                                  # Use postgresql as the database for Active Record
 gem 'sass-rails', '~> 5.0'                                # Use SCSS for stylesheets
@@ -28,3 +30,5 @@ group :development, :test do
   gem 'factory_girl_rails'                                # factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
   gem 'database_cleaner'                                  # database clean library
 end
+
+ruby '2.2.1'
