@@ -1,0 +1,4 @@
+#articles
+  = paginate @articles, :remote => true
+  = render(:partial => 'articles/partials/articles')
+  = paginate @articles, :remote => true

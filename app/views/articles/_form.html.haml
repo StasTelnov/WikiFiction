@@ -1,4 +1,4 @@
-= simple_form_for(@article, :remote => true, :class => 'RemoteForm', :data => { :'class-binder' => 'RemoteForm' }) do |f|
+= simple_form_for(@article, :remote => true, :data => { :'class-binder' => 'RemoteFormUnlock' }) do |f|
   = render(:partial => 'share/base_errors', :locals => { :object => @article })
   .row
     .col-md-3

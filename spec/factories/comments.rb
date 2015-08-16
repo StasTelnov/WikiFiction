@@ -3,7 +3,7 @@ FactoryGirl.define do
     article       { Article.random_record }
     author        { Faker::Name.name }
     text          { Faker::Lorem.paragraph }
-    rating        { Faker::Number.between(1, 5) }
+    rating        { (rand * 5).round(2) }
   end
 
 end

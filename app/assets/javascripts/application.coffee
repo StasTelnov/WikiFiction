@@ -18,7 +18,6 @@
 #= require_tree ./plugins
 #= require_tree ./templates
 #= require_tree ./core
-#= require_tree ./classes
 
 WFiction.app ?= new WFiction.Application
 WFiction.app.start()

@@ -26,6 +26,7 @@ module ShoppingCart
     config.eager_load_paths += Dir["#{config.root}/app/models/seed_models/**/"]
     config.autoload_paths   += Dir["#{config.root}/app/models/seed_models/**/"]
     config.autoload_paths   += Dir["#{config.root}/lib/**/"]
+    config.autoload_paths   += Dir["#{config.root}/app/models/none_database_models/**/"]
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

@@ -1,4 +1,4 @@
-= simple_form_for(comment, :url => add_comment_article_path(@article), :method => :post, :remote => true, :class => 'RemoteForm', :data => { :'class-binder' => 'RemoteForm' }) do |f|
+= simple_form_for(comment, :url => add_comment_article_path(@article), :method => :post, :remote => true, :data => { :'class-binder' => 'RemoteFormUnlock' }) do |f|
   = render(:partial => 'share/base_errors', :locals => { :object => comment })
   .row
     .col-md-2

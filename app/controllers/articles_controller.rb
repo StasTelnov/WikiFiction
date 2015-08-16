@@ -4,7 +4,21 @@ class ArticlesController < ApplicationController
   # GET /articles
   # GET /articles.json
   def index
-    @articles = Article.all.page(params[:page])
+    @article_filter = ArticleFilter.new(article_filter_params)
+    @articles = Article.search(@article_filter).includes(:category).page(params[:page])
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+  end
+
+  def top_ten
+    @articles = Article.top_ten.includes(:category)
+
+    respond_to do |format|
+      format.html
+    end
   end
 
   # GET /articles/1
@@ -24,10 +38,9 @@ class ArticlesController < ApplicationController
   # POST /articles
   # POST /articles.json
   def create
-    @article = Article.new(article_params)
+    @article = Article.create(article_params)
 
     respond_to do |format|
-      @article.save
       format.js
     end
   end
@@ -35,17 +48,17 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1
   # PATCH/PUT /articles/1.json
   def update
+    @article.update_with_conflict_validation(article_params)
+
     respond_to do |format|
-      @article.update_with_conflict_validation(article_params)
       format.js
     end
   end
 
   def add_comment
-    @comment = @article.comments.build(comment_params)
+    @comment = @article.comments.create(comment_params)
 
     respond_to do |format|
-      @comment.save
       format.js
     end
   end
@@ -63,5 +76,19 @@ class ArticlesController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:author, :text, :rating)
+    end
+
+    def article_filter_params
+      params.require(:article_filter).permit(
+          :title,
+          :author,
+          { :category_ids => [] },
+          :rating_from,
+          :rating_to,
+          :comments_count_from,
+          :comments_count_to,
+          :order_column,
+          :direction
+      ) if params[:article_filter]
     end
 end

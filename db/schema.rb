@@ -35,12 +35,12 @@ ActiveRecord::Schema.define(version: 20150812115403) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "article_id",                      null: false
-    t.text     "text",                            null: false
-    t.string   "author",     default: "somebody", null: false
-    t.float    "rating",     default: 0.0,        null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.integer  "article_id",               null: false
+    t.text     "text",                     null: false
+    t.string   "author",                   null: false
+    t.float    "rating",     default: 0.0, null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree

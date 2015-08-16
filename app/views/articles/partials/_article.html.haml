@@ -1,9 +1,9 @@
-%tr
+%tr{:id => "#{article.id}"}
   %td= article.title
   %td= article.author
   %td= article.category.name
-  %td= number_with_precision(article.rating, :precision => 2)
-  %td= article.comments.count
+  %td= number_with_precision(article.comments_rating, :precision => 2)
+  %td= article.comments_count
   %td= article.ip
   %td= time_ago_in_words(article.updated_at)
   %td
