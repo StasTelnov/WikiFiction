@@ -21,14 +21,14 @@ gem 'kaminari-bootstrap'                                  # Basic Gem for quick 
 gem 'simple_form'                                         # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
 gem 'ejs'                                                 # EJS templates for JavaScript
 gem 'database_cleaner'                                  # database clean library
+gem 'faker'                                             # The faker and ffaker APIs are mostly the same, although the API on ffaker keeps growing with its users additions.
+gem 'factory_girl_rails'                                # factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
 
 group :development, :test do
   # gem 'byebug'                                            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'web-console', '~> 2.0'                             # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'spring'                                            # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rspec-rails'                                       # rspec-rails is a testing framework for Rails 3.x and 4.x.
-  gem 'faker'                                             # The faker and ffaker APIs are mostly the same, although the API on ffaker keeps growing with its users additions.
-  gem 'factory_girl_rails'                                # factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
 end
 
 ruby '2.2.1'
