@@ -20,6 +20,7 @@ gem 'kaminari'                                            # A Scope & Engine bas
 gem 'kaminari-bootstrap'                                  # Basic Gem for quick default inclusion of Kaminari theme compatible with Twitter Bootstrap 2.0
 gem 'simple_form'                                         # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
 gem 'ejs'                                                 # EJS templates for JavaScript
+gem 'database_cleaner'                                  # database clean library
 
 group :development, :test do
   # gem 'byebug'                                            # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -28,7 +29,6 @@ group :development, :test do
   gem 'rspec-rails'                                       # rspec-rails is a testing framework for Rails 3.x and 4.x.
   gem 'faker'                                             # The faker and ffaker APIs are mostly the same, although the API on ffaker keeps growing with its users additions.
   gem 'factory_girl_rails'                                # factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
-  gem 'database_cleaner'                                  # database clean library
 end
 
 ruby '2.2.1'
