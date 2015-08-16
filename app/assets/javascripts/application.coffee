@@ -15,9 +15,8 @@
 #= require turbolinks
 #= require bootstrap-sprockets
 
-#= require_tree ./plugins
-#= require_tree ./templates
-#= require_tree ./core
+#= require_directory ./templates
+#= require_directory ./core
 
 WFiction.app ?= new WFiction.Application
 WFiction.app.start()
