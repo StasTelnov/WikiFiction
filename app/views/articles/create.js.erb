@@ -1,7 +1,6 @@
-if (<%= @article.errors.present? %>) {
-    $('form').replaceWith('<%= j(render('articles/form')) %>');
+<% if @article.errors.present? %>
+    $('#form').html('<%= j(render('articles/form')) %>');
     WFiction.app.afterRenderPage();
-} else {
-//    $('#not-saved-form').hide().after('<%= j(saved_button) %>');
+<% else %>
     Turbolinks.visit('/articles/<%= @article.id %>');
-}
+<% end %>

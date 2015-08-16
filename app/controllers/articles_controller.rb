@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles.json
   def index
     @article_filter = ArticleFilter.new(article_filter_params)
-    @articles = Article.search(@article_filter).includes(:category).page(params[:page])
+    @articles = Article.includes(:category).search(@article_filter).page(params[:page])
 
     respond_to do |format|
       format.html
@@ -13,8 +13,8 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def top_ten
-    @articles = Article.top_ten.includes(:category)
+  def top
+    @articles = Article.includes(:category).top(10)
 
     respond_to do |format|
       format.html
@@ -51,7 +51,7 @@ class ArticlesController < ApplicationController
     @article.update_with_conflict_validation(article_params)
 
     respond_to do |format|
-      format.js
+      format.js{ render 'create' }
     end
   end
 
@@ -66,7 +66,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      begin
+        @article = Article.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to(root_url, :notice => 'The Article not found!')
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

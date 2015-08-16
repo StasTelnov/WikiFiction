@@ -28,5 +28,6 @@
     - @article.comments.each do |comment|
       = render(:partial => 'articles/partials/comment', :locals => { :comment => comment })
 
-= render(:partial => 'articles/partials/comment_form', :locals => { :comment => @article.comments.build })
+#form
+  = render(:partial => 'articles/partials/comment_form', :locals => { :comment => @article.comments.build })
 

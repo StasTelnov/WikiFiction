@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     member do
       post 'add_comment'
     end
-    get 'top_ten', :on => :collection
+    get 'top', :on => :collection
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

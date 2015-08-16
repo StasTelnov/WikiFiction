@@ -47,8 +47,8 @@ class Article < Base::VersionModel
 
   class << self
 
-    def top_ten
-      select_all_with_comments_count_and_rating.order('comments_rating DESC').limit(10)
+    def top(quantity)
+      select_all_with_comments_count_and_rating.order('comments_rating DESC').limit(quantity)
     end
 
     def search(article_filter)
@@ -60,7 +60,7 @@ class Article < Base::VersionModel
           'INNER JOIN (
           SELECT article_id, AVG(comments.rating) AS rating, count(comments.article_id) AS count
           FROM comments GROUP BY comments.article_id) AS comments
-      ON articles.id = comments.article_id'
+          ON articles.id = comments.article_id'
       )
     end
 

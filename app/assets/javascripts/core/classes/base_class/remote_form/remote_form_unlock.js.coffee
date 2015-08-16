@@ -1,4 +1,4 @@
-class WFiction.Classes.RemoteFormUnlock extends WFiction.Classes.BaseClass
+class WFiction.Classes.RemoteFormUnlock extends WFiction.Classes.RemoteForm
   constructor: (options = {}) ->
     super(options)
 

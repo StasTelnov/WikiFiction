@@ -13,6 +13,5 @@
     .col-md-2
       = f.collection_check_boxes :category_ids, Category.all, :id, :name # using :roles here is not going to work.
     .col-md-2
-      = f.input :order_column, collection: [['Title', 'articles.title'], ['Author', 'articles.author'], ['Category', 'category.name'], ['Rating', 'comments.rating'], ['Number of comments', 'comments.count'], ['ip', 'articles.ip'], ['Last update', 'articles.updated_at']]
+      = f.input :order_column, collection: [['Title', 'articles.title'], ['Author', 'articles.author'], ['Rating', 'comments.rating'], ['Number of comments', 'comments.count'], ['ip', 'articles.ip'], ['Last update', 'articles.updated_at']]
       = f.input :direction, collection: [['ASC', 'ASC'], ['DESC', 'DESC']], :include_blank => false
-      -#= save_button(f, 'Find')

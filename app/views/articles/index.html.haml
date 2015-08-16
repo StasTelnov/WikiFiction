@@ -1,5 +1,7 @@
 = link_to('New article', new_article_path, :class => 'btn btn-success')
 %hr
-= render(:partial => 'articles/partials/article_filter_form', :locals => { :article_filter => @article_filter })
+#form
+  = render(:partial => 'articles/partials/article_filter_form', :locals => { :article_filter => @article_filter })
 %hr
-= render(:partial => 'articles/partials/index')
+#articles
+  = render(:partial => 'articles/partials/index')

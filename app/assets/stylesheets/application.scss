@@ -21,3 +21,8 @@
 .main-container{
   margin-top: 80px;
 }
+
+html.turbolinks-progress-bar::before {
+  background-color: red !important;
+  height: 1.4px !important;
+}

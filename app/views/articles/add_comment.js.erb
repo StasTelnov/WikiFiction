@@ -1,10 +1,9 @@
-if(<%= @comment.errors.present? %>) {
-    $('form').replaceWith('<%= j(render(:partial => 'articles/partials/comment_form', :locals => { :comment => @comment })) %>');
-} else {
-    $('form').replaceWith('<%= j(render(:partial => 'articles/partials/comment_form', :locals => { :comment => @article.comments.build })) %>');
+<% if @comment.errors.present? %>
+    $('#form').html('<%= j(render(:partial => 'articles/partials/comment_form', :locals => { :comment => @comment })) %>');
+<% else %>
+    $('#form').html('<%= j(render(:partial => 'articles/partials/comment_form', :locals => { :comment => @article.comments.build })) %>');
     $('#comments').find('tbody:last').append('<%= j(render(:partial => 'articles/partials/comment', :locals => { :comment => @comment })) %>');
     $('#rating').text('<%=  number_with_precision(@article.rating, :precision => 2) %>');
     $('#not-saved-form').hide().after('<%= j(saved_button('Comment was added')) %>');
-}
-
+<% end %>
 WFiction.app.afterRenderPage();

@@ -3,14 +3,10 @@ window.WFiction.Classes  ?= {}
 
 class WFiction.Application
   constructor: ->
-    @alert ||= new WFiction.Classes.Alert
+    @alert ?= new WFiction.Classes.Alert
+    Turbolinks.ProgressBar ?= Turbolinks.enableProgressBar();
 
   start: =>
-    NProgress.configure({showSpinner: false})
-    $(document).on('page:fetch',   NProgress.start)
-    $(document).on('page:change',  NProgress.done)
-    $(document).on('page:restore', NProgress.remove)
-
     $(document).on('ready page:load', @afterRenderPage)
 
   afterRenderPage: =>
