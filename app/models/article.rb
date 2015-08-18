@@ -10,8 +10,10 @@ class Article < Base::VersionModel
   scope :category_ids,        -> (category_ids)         { where('articles.category_id IN (?)', category_ids) }
   scope :comments_count_from, -> (comments_count_from)  { where('comments.count >= ? ', comments_count_from) }
   scope :comments_count_to,   -> (comments_count_to)    { where('comments.count <= ?', comments_count_to) }
-  scope :rating_from,         -> (rating_from)          { where('comments.rating >= ?', rating_from) }
-  scope :rating_to,           -> (rating_to)            { where('comments.rating <= ?', rating_to) }
+  scope :rating_from,         -> (rating_from)          { where('rating >= ?', rating_from) }
+  scope :rating_to,           -> (rating_to)            { where('rating <= ?', rating_to) }
+  scope :created_from,        -> (created_from)         { where('created_at >= ?', created_from) }
+  scope :created_to,          -> (created_to)           { where('created_at <= ?', created_to) }
 
   def self.order_by(order)
     order("#{order[:order_column]} #{order[:direction]}")
@@ -41,35 +43,31 @@ class Article < Base::VersionModel
     false
   end
 
-  def rating
-    comments.average(:rating)
-  end
-
   class << self
 
     def top(quantity)
-      select_all_with_comments_count_and_rating.order('comments_rating DESC').limit(quantity)
+      select_all_with_comments_count.order(:rating => :desc).limit(quantity)
     end
 
     def search(article_filter)
-      select_all_with_comments_count_and_rating.filter(article_filter.filtering_params)
+      select_all_with_comments_count.filter(article_filter.filtering_params)
     end
 
-    def joins_comments_count_and_rating
+    def joins_comments_count
       joins(
           'INNER JOIN (
-          SELECT article_id, AVG(comments.rating) AS rating, count(comments.article_id) AS count
-          FROM comments GROUP BY comments.article_id) AS comments
+              SELECT comments.article_id, count(*) AS count
+              FROM comments
+              GROUP BY comments.article_id
+          ) AS comments
           ON articles.id = comments.article_id'
       )
     end
 
-    def select_all_with_comments_count_and_rating
-      select('articles.*, comments.count AS comments_count, comments.rating AS comments_rating')
-          .joins_comments_count_and_rating
+    def select_all_with_comments_count
+      select('articles.*, comments.count AS comments_count').joins_comments_count
     end
 
   end
-
 
 end

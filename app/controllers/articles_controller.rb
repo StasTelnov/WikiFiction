@@ -92,7 +92,9 @@ class ArticlesController < ApplicationController
           :comments_count_from,
           :comments_count_to,
           :order_column,
-          :direction
+          :direction,
+          :created_from,
+          :created_to
       ) if params[:article_filter]
     end
 end

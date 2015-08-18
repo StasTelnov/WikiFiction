@@ -17,17 +17,21 @@ ActiveRecord::Schema.define(version: 20150812115403) do
   enable_extension "plpgsql"
 
   create_table "articles", force: :cascade do |t|
-    t.integer  "category_id",              null: false
-    t.text     "text",                     null: false
-    t.string   "title",                    null: false
-    t.string   "author",                   null: false
-    t.inet     "ip",                       null: false
-    t.integer  "lock_version", default: 0, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "category_id",                null: false
+    t.text     "text",                       null: false
+    t.string   "title",                      null: false
+    t.string   "author",                     null: false
+    t.inet     "ip",                         null: false
+    t.float    "rating",       default: 0.0, null: false
+    t.integer  "lock_version", default: 0,   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
+  add_index "articles", ["author"], name: "index_articles_on_author", using: :btree
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
+  add_index "articles", ["ip"], name: "index_articles_on_ip", using: :btree
+  add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string "name_en", limit: 255, null: false

@@ -6,6 +6,7 @@ class CreateArticles < Migration::TableMigration
       t.string      :title,         :null => false
       t.string      :author,        :null => false
       t.inet        :ip,            :null => false
+      t.float       :rating,        :null => false, :default => 0
       t.integer     :lock_version,  :null => false, :default => 0
 
       t.foreign_key :categories

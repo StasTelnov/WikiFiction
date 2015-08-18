@@ -2,8 +2,10 @@
   .row
     .col-md-2
       = f.input :title
-    .col-md-2
       = f.input :author
+    .col-md-2
+      = f.input :created_from, :as => :string, :input_html => { :data => { :provide => 'datepicker', :'date-format' => 'dd/mm/yyyy' } }
+      = f.input :created_to, :as => :string, :input_html => { :data => { :provide => 'datepicker', :'date-format' => 'dd/mm/yyyy' } }
     .col-md-2
       = f.input :rating_from, :as => :float, :input_html => { :min => 0, :max => 5}
       = f.input :rating_to, :as => :float, :input_html => { :min => 0, :max => 5}
@@ -13,5 +15,5 @@
     .col-md-2
       = f.collection_check_boxes :category_ids, Category.all, :id, :name # using :roles here is not going to work.
     .col-md-2
-      = f.input :order_column, collection: [['Title', 'articles.title'], ['Author', 'articles.author'], ['Rating', 'comments.rating'], ['Number of comments', 'comments.count'], ['ip', 'articles.ip'], ['Last update', 'articles.updated_at']]
+      = f.input :order_column, collection: [['Title', 'articles.title'], ['Author', 'articles.author'], ['Rating', 'rating'], ['Number of comments', 'comments_count'], ['ip', 'articles.ip'], ['Last update', 'articles.updated_at']]
       = f.input :direction, collection: [['ASC', 'ASC'], ['DESC', 'DESC']], :include_blank => false

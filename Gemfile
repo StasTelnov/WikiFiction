@@ -18,6 +18,7 @@ gem 'puma'                                                # Thin Ruby WebServer 
 gem 'bootstrap-sass'                                      # bootstrap-sass is a Sass-powered version of Bootstrap, ready to drop right into your Sass powered applications.
 gem 'kaminari'                                            # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Rails 4
 gem 'kaminari-bootstrap'                                  # Basic Gem for quick default inclusion of Kaminari theme compatible with Twitter Bootstrap 2.0
+gem 'bootstrap-datepicker-rails'                          #bootstrap-datepicker-rails project integrates a datepicker with Rails 3 assets pipeline.
 gem 'simple_form'                                         # Simple Form aims to be as flexible as possible while helping you with powerful components to create your forms.
 gem 'ejs'                                                 # EJS templates for JavaScript
 gem 'database_cleaner'                                    # database clean library
