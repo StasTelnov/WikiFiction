@@ -13,6 +13,7 @@ class CreateArticles < Migration::TableMigration
     end
     add_index :articles, :title
     add_index :articles, :author
+    add_index :articles, :rating
     add_index :articles, :ip
   end
 end
