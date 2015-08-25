@@ -24,6 +24,7 @@ gem 'ejs'                                                 # EJS templates for Ja
 gem 'database_cleaner'                                    # database clean library
 gem 'faker'                                               # The faker and ffaker APIs are mostly the same, although the API on ffaker keeps growing with its users additions.
 gem 'factory_girl_rails'                                  # factory_girl is a fixtures replacement with a straightforward definition syntax, support for multiple build strategies
+gem 'andand'                                              # If the result is nil, then the expression returns nil without throwing a NoMethodError.
 
 group :development, :test do
   # gem 'byebug'                                            # Call 'byebug' anywhere in the code to stop execution and get a debugger console

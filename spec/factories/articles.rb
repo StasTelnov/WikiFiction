@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :article do
-    category      { Category.random_record }
+    category      { Category.offset(rand(Category.count)).first }
     title         { Faker::Name.title }
     author        { Faker::Name.name }
     text          { Faker::Lorem.paragraph(100) }
@@ -12,5 +12,4 @@ FactoryGirl.define do
       end
     end
   end
-
 end

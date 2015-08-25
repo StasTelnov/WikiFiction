@@ -14,7 +14,7 @@ def get_from_file(model)
   file      = model.name.underscore
   file_path = Rails.root.join("db","seeds", "#{file}.csv").to_path
   CSV.foreach(file_path, { :headers => true }) do |row|
-    model.create_with(row.to_hash).find_or_create_by(:code => row.to_hash['code'])
+    model.create_with(row.to_hash).find_or_create_by(:name => row.to_hash['name'])
   end
   puts "[#{model.name}] was populated"
 end

@@ -1,4 +1,4 @@
-class Comment < Base::VersionModel
+class Comment < ActiveRecord::Base
   belongs_to :article
 
   validates :author,

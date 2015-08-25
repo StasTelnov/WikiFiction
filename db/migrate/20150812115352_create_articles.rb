@@ -1,4 +1,4 @@
-class CreateArticles < Migration::TableMigration
+class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
       t.references  :category,      :null => false, :index => true
@@ -8,6 +8,7 @@ class CreateArticles < Migration::TableMigration
       t.inet        :ip,            :null => false
       t.float       :rating,        :null => false, :default => 0
       t.integer     :lock_version,  :null => false, :default => 0
+      t.timestamps  :null => false
 
       t.foreign_key :categories
     end

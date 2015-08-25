@@ -31,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150812115403) do
   add_index "articles", ["author"], name: "index_articles_on_author", using: :btree
   add_index "articles", ["category_id"], name: "index_articles_on_category_id", using: :btree
   add_index "articles", ["ip"], name: "index_articles_on_ip", using: :btree
+  add_index "articles", ["rating"], name: "index_articles_on_rating", using: :btree
   add_index "articles", ["title"], name: "index_articles_on_title", using: :btree
 
   create_table "categories", force: :cascade do |t|
-    t.string "name_en", limit: 255, null: false
-    t.string "code",    limit: 255, null: false
+    t.string "name", limit: 255, null: false
   end
 
   create_table "comments", force: :cascade do |t|
